@@ -9,10 +9,11 @@ def judge(c):
     if c >= 'A' and c <= 'Z' or c >= 'a' and c <= 'z':
         return True
     else:
-        return False	
+        return False
 
 def chara_count(s):
     return len(s)
+	
 	
 def word_count(s):
     word_number = 0
@@ -24,5 +25,15 @@ def word_count(s):
         if (flag == 1 and judge(char) == False) :
             flag = 0
     return word_number
+
 	
-print word_count(str)
+def line_count(s):
+    line_number = 0
+    for char in s:
+        if char == '\n':
+            line_number = line_number + 1
+    if char[-1] != '\n':
+        line_number = line_number + 1
+    return line_number
+	
+print line_count(str)
