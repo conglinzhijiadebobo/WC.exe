@@ -26,5 +26,3 @@ def word_count(s):
     return word_number
 	
 print word_count(str)
-
-no shit
