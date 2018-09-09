@@ -1,7 +1,7 @@
 #include<stdio.h>
 int main(void)
 {
-    /*下面要输出hello world*/
-    printf("hello world");
+    printf("hello world"); //comment(Not a comment line) 
     return 0;
- } 
+//comment line 1
+}//comment line 2

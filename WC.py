@@ -20,7 +20,7 @@ def judge_visible_character(c):
         return False
 
 def code_line(l):
-    if len(l) >= 2:
+    if len(l) >= 2 and (l[0] != '/' and l[1] != '/' or l[1] != '/'and l[2] != '/'):
         return True
     else:
         return False
@@ -38,10 +38,13 @@ def blank_line(l):
         return False
     else:
         return True
-    
+		
 
-def chara_count(s):
-    return len(s)
+def comment_line(l):
+    if len(l) >= 2 and (l[1] == '/'and l[2] == '/' or l[0] == '/' and l[1] == '/'):
+        return True
+    else:
+        return False
 	
 	
 def word_count(s):
@@ -88,7 +91,20 @@ def blank_lines_count(l):
             number_of_blank_line = number_of_blank_line + 1
     return number_of_blank_line
     
-print blank_lines_count(lines)
+	
+	
+def comment_lines_count(l):
+    number_of_comment_lines = 0
+    for line in l:
+        if comment_line(line) == True:
+            number_of_comment_lines = number_of_comment_lines + 1
+    return number_of_comment_lines
+	
+	
+	
+	
+	
+print comment_lines_count(lines)
 	
 	
 	
