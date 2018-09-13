@@ -156,13 +156,13 @@ def gui():
     filename = tkFileDialog.askopenfilename()
 
     numbers = give_all_the_number(filename)
-    the_info = ["Characters:" + str(numbers[0]), "Words:" + str(numbers[1]), "lines:" + str(numbers [2]), "Code lines:" + str(numbers[3]), "Blank lines" + str(numbers[4]), "comment lines" + str(numbers[5])] 
+    the_info = ["Characters:" + str(numbers[0]), "Words: " + str(numbers[1]), "lines: " + str(numbers [2]), "Code lines: " + str(numbers[3]), "Blank lines: " + str(numbers[4]), "Comment lines: " + str(numbers[5])] 
     
     file_display = Tkinter.Label(root, text = open(filename).read(), justify = 'left')
     numbers_display = Tkinter.Listbox(root, width = 400)
 	
     for item in the_info:
-	    numbers_display.insert(0, item)
+	    numbers_display.insert('end', item)
     
     file_display.pack()
     numbers_display.pack()
