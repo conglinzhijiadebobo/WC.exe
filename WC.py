@@ -1,6 +1,6 @@
-#coding=utf-8
 from sys import argv
 import os
+import Tkinter, tkFileDialog
 
 
 #read by characters in the process down here.
@@ -129,13 +129,52 @@ def print_numbers(f, orders):
     file.close()
     for order in orders:
         print_a_number(order, str, lines)
+		
+		
+def give_all_the_number(f):
+    file = open(f)
+    str = file.read()
+    file.close()
+		
+    file = open(f)  
+    lines = file.readlines()
+    file.close()
+    c = len(str)
+    w = count_words(str)
+    l = count_lines(str)
+    code_line = count_lines_of_code(lines)
+    blank_line = count_blank_lines(lines)
+    comment_line = count_comment_lines(lines)
+    numbers = [c, w, l, code_line, blank_line, comment_line]
+    return numbers
 	
+def gui():
+    root = Tkinter.Tk()
+    root.title('Counter')
+    root.geometry('400x500')
+    
+    filename = tkFileDialog.askopenfilename()
+
+    numbers = give_all_the_number(filename)
+    the_info = ["Characters:" + str(numbers[0]), "Words:" + str(numbers[1]), "lines:" + str(numbers [2]), "Code lines:" + str(numbers[3]), "Blank lines" + str(numbers[4]), "comment lines" + str(numbers[5])] 
+    
+    file_display = Tkinter.Label(root, text = open(filename).read(), justify = 'left')
+    numbers_display = Tkinter.Listbox(root, width = 400)
+	
+    for item in the_info:
+	    numbers_display.insert(0, item)
+    
+    file_display.pack()
+    numbers_display.pack()
+    root.mainloop()
 	
 
 
 
 if __name__=="__main__":
-    if argv[1] == '-s':
+    if argv[1] == '-x':
+        gui()
+    elif argv[1] == '-s':
         path = argv[-1].split('*')
         all_file = []
         all_file = get_file_from_path(path[0], all_file)    
@@ -143,13 +182,3 @@ if __name__=="__main__":
             print_numbers(file, argv[2:-1])
     else:
         print_numbers(argv[-1], argv[1:-1])
-	    
-	
-	
-	
-	
-	
-	
-	
-	
-	
