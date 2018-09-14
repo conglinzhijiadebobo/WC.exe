@@ -118,7 +118,6 @@ def print_a_number(order, s, l):
         print count_blank_lines(l)
         print count_comment_lines(l)
 	
-	
 def print_numbers(f, orders):
     file = open(f)
     str = file.read()
