@@ -172,9 +172,9 @@ def gui():
 
 
 if __name__=="__main__":
-    if argv[1] == '-x':
+    if len(argv) >=2 and argv[1] == '-x':
         gui()
-    elif argv[1] == '-s':
+    elif len(argv) >=2 and argv[1] == '-s' :
         path = argv[-1].split('*')
         all_file = []
         all_file = get_file_from_path(path[0], all_file)    
